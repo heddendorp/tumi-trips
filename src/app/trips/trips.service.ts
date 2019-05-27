@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 
 import localForage from 'localforage';
 import {createClient} from 'contentful';
-import {BehaviorSubject} from 'rxjs';
+import {BehaviorSubject, Observable} from 'rxjs';
 import {map, mergeMap, switchAll, switchMap} from 'rxjs/operators';
 import {fromPromise} from 'rxjs/internal-compatibility';
 
@@ -34,7 +34,7 @@ export class TripsService {
     return this.dataReload.pipe(mergeMap(() => fromPromise(this.db.getItem('trips'))));
   }
 
-  getTripDetails(tripId) {
+  getTripDetails(tripId): Observable<any> {
     return this.dataReload.pipe(mergeMap(() => fromPromise(this.db.getItem('trips').then(trips => trips.find(trip => trip.sys.id === tripId)))));
   }
 
