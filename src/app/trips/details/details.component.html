@@ -1,9 +1,7 @@
-<p>
-  details works!
-</p>
-<h1>{{(selectedTrip$ | async)?.fields.title}}</h1>
-<h4>{{(selectedTrip$ | async)?.fields.start | date}}</h4>
-<ul>
-  <li routerLink="./schedule">Schedule</li>
-  <li *ngFor="let page of (selectedTrip$ | async)?.fields.pages" routerLink="./{{page.sys.id}}">{{page.fields.title}}</li>
-</ul>
+
+<h2>{{(selectedTrip$ | async)?.fields.title}}</h2>
+<h3>{{(selectedTrip$ | async)?.fields.start | date}}</h3>
+<mat-nav-list>
+  <a mat-list-item routerLink="./schedule">Schedule</a>
+  <a mat-list-item *ngFor="let page of (selectedTrip$ | async)?.fields.pages" routerLink="./{{page.sys.id}}">{{page.fields.title}}</a>
+</mat-nav-list>

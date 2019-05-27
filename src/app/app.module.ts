@@ -12,6 +12,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import {MarkdownModule} from 'ngx-markdown';
+import {MatListModule} from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import {MarkdownModule} from 'ngx-markdown';
     BrowserAnimationsModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     MarkdownModule.forRoot(),
+    MatListModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

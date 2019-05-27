@@ -1,6 +1,7 @@
-<p>
-  schedule works!
-</p>
-<ol>
-  <li *ngFor="let event of events | async">{{event.fields.title}}<br>{{event.fields.start | date:'medium'}}</li>
-</ol>
+<h2>Schedule ⌚</h2>
+<mat-list>
+  <mat-list-item *ngFor="let event of events | async">
+    <h3 mat-line>{{event.fields.title}}</h3>
+    <p mat-line>{{event.fields.start | date:'medium'}}</p>
+  </mat-list-item>
+</mat-list>
