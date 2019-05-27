@@ -1,0 +1,9 @@
+<p>
+  details works!
+</p>
+<h1>{{(selectedTrip$ | async)?.fields.title}}</h1>
+<h4>{{(selectedTrip$ | async)?.fields.start | date}}</h4>
+<ul>
+  <li routerLink="./schedule">Schedule</li>
+  <li *ngFor="let page of (selectedTrip$ | async)?.fields.pages" routerLink="./{{page.sys.id}}">{{page.fields.title}}</li>
+</ul>

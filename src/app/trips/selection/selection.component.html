@@ -1,0 +1,6 @@
+<p>
+  selection works!
+</p>
+<ul>
+  <li *ngFor="let trip of currentTrips$ | async" routerLink="/trips/{{trip.sys.id}}">{{trip.fields.title}}</li>
+</ul>

@@ -1,0 +1,6 @@
+<p>
+  info-page works!
+</p>
+<h1>{{(page | async)?.fields.title}}</h1>
+<markdown ngPreserveWhitespaces [data]="(page |async)?.fields.content">
+</markdown>
