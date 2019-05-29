@@ -11,8 +11,9 @@ import { InfoPageComponent } from './trips/info-page/info-page.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
-import {MarkdownModule} from 'ngx-markdown';
-import {MatListModule} from '@angular/material';
+import {MatCardModule, MatListModule} from '@angular/material';
+import {FlexLayoutModule} from '@angular/flex-layout';
+import {NgxMdModule} from 'ngx-md';
 
 @NgModule({
   declarations: [
@@ -27,9 +28,11 @@ import {MatListModule} from '@angular/material';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    FlexLayoutModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
-    MarkdownModule.forRoot(),
+    NgxMdModule.forRoot(),
     MatListModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]

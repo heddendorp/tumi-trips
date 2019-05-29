@@ -1,6 +1,8 @@
 
 <h2>{{(selectedTrip$ | async)?.fields.title}}</h2>
 <h3>{{(selectedTrip$ | async)?.fields.start | date}}</h3>
+<div NgxMd  [data]="(selectedTrip$ |async)?.fields.description">
+</div>
 <mat-nav-list>
   <a mat-list-item routerLink="./schedule">Schedule</a>
   <a mat-list-item *ngFor="let page of (selectedTrip$ | async)?.fields.pages" routerLink="./{{page.sys.id}}">{{page.fields.title}}</a>

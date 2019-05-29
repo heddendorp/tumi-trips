@@ -32,7 +32,6 @@
               "src/styles.scss"
             ],
             "scripts": [
-              "node_modules/marked/lib/marked.js"
             ],
             "es5BrowserSupport": true
           },
@@ -92,7 +91,6 @@
               "src/styles.scss"
             ],
             "scripts": [
-              "node_modules/marked/lib/marked.js"
             ],
             "assets": [
               "src/favicon.ico",
