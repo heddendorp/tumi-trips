@@ -11,9 +11,12 @@ import { InfoPageComponent } from './trips/info-page/info-page.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
-import {MatCardModule, MatListModule} from '@angular/material';
+import { MatCardModule } from '@angular/material/card';
+import { MatListModule } from '@angular/material/list';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {NgxMdModule} from 'ngx-md';
+import {HttpClientModule} from '@angular/common/http';
+import {MatDividerModule} from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -29,10 +32,12 @@ import {NgxMdModule} from 'ngx-md';
     AppRoutingModule,
     BrowserAnimationsModule,
     FlexLayoutModule,
+    HttpClientModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     NgxMdModule.forRoot(),
     MatListModule,
-    MatCardModule
+    MatCardModule,
+    MatDividerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

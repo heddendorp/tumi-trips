@@ -1,10 +1,8 @@
+<h4 routerLink="../">Back to overview</h4>
 <h2>Schedule ⌚</h2>
-<div gdAuto gdRows="100px">
-  <mat-card></mat-card>
+<div gdAuto gdRows="100px!" gdGap="1rem">
+  <mat-card *ngFor="let event of events | async">
+    <mat-card-title>{{event.fields.title}}</mat-card-title>
+    <mat-card-subtitle>{{event.fields.start | date:'short'}} - {{event.fields.end | date:'short'}}</mat-card-subtitle>
+  </mat-card>
 </div>
-<mat-list>
-  <mat-list-item *ngFor="let event of events | async">
-    <h3 mat-line>{{event.fields.title}}</h3>
-    <p mat-line>{{event.fields.start | date:'medium'}}</p>
-  </mat-list-item>
-</mat-list>
