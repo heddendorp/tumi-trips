@@ -1,8 +1,19 @@
-<h4 routerLink="../">Back to overview</h4>
-<h2>Schedule ⌚</h2>
+<h3 routerLink="../">⬆ Back to overview ⬆</h3>
+<h2>Coming up ⌚</h2>
 <div gdAuto gdRows="100px!" gdGap="1rem">
   <mat-card *ngFor="let event of events | async">
     <mat-card-title>{{event.fields.title}}</mat-card-title>
     <mat-card-subtitle>{{event.fields.start | date:'short'}} - {{event.fields.end | date:'short'}}</mat-card-subtitle>
   </mat-card>
 </div>
+<div style="width: 100%; margin-top: 20px;"></div>
+<mat-divider></mat-divider>
+<div style="width: 100%; margin-top: 20px;"></div>
+<h3>What we already did</h3>
+<mat-list>
+  <mat-list-item *ngFor="let event of events | async">
+    <mat-icon matListIcon>✔</mat-icon>
+    <h3 mat-line>{{event.fields.title}}</h3>
+    <p mat-line>{{event.fields.start | date:'short'}} - {{event.fields.end | date:'short'}}</p>
+  </mat-list-item>
+</mat-list>

@@ -3,7 +3,7 @@ import {Injectable} from '@angular/core';
 import localForage from 'localforage';
 import {createClient} from 'contentful';
 import {BehaviorSubject, Observable} from 'rxjs';
-import {map, mergeMap, switchAll, switchMap} from 'rxjs/operators';
+import {exhaustMap, map, mergeMap, switchAll, switchMap} from 'rxjs/operators';
 import {fromPromise} from 'rxjs/internal-compatibility';
 
 @Injectable({
@@ -25,17 +25,17 @@ export class TripsService {
   async loadTrips() {
     const data = await this.contentfulClient.getEntries({content_type: 'trip', include: 3});
     const trips = this.contentfulClient.parseEntries(data).items;
-    this.db.setItem('trips', trips);
+    await this.db.setItem('trips', trips);
     console.log(trips);
     this.dataReload.next(null);
   }
 
   getTrips() {
-    return this.dataReload.pipe(mergeMap(() => fromPromise(this.db.getItem('trips'))));
+    return this.dataReload.pipe(exhaustMap(() => fromPromise(this.db.getItem('trips'))));
   }
 
   getTripDetails(tripId): Observable<any> {
-    return this.dataReload.pipe(mergeMap(() => fromPromise(this.db.getItem('trips').then(trips => trips.find(trip => trip.sys.id === tripId)))));
+    return this.dataReload.pipe(exhaustMap(() => fromPromise(this.db.getItem('trips').then(trips => trips.find(trip => trip.sys.id === tripId)))));
   }
 
   getPage(tripId, pageId) {
