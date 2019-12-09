@@ -1,4 +1,4 @@
 <h3 routerLink="../">⬆ Back to overview ⬆</h3>
 <h2>{{(page | async)?.fields.title}}</h2>
-<div NgxMd  [data]="(page |async)?.fields.content">
-</div>
+<markdown  [data]="(page |async)?.fields.content">
+</markdown>

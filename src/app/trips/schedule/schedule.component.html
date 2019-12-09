@@ -1,9 +1,12 @@
 <h3 routerLink="../">⬆ Back to overview ⬆</h3>
 <h2>Coming up ⌚</h2>
-<div gdAuto gdRows="100px!" gdGap="1rem">
+<div fxLayout="column" fxLayoutGap="1rem">
   <mat-card *ngFor="let event of events | async">
     <mat-card-title>{{event.fields.title}}</mat-card-title>
-    <mat-card-subtitle>{{event.fields.start | date:'short'}} - {{event.fields.end | date:'short'}}</mat-card-subtitle>
+    <mat-card-subtitle>{{event.fields.start | date:'d LLL HH:mm'}} - {{event.fields.end | date:'d LLL - HH:mm'}}</mat-card-subtitle>
+    <mat-card-content *ngIf="event.fields.description">
+      <markdown [data]="event.fields.description"></markdown>
+    </mat-card-content>
   </mat-card>
 </div>
 <div style="width: 100%; margin-top: 20px;"></div>
@@ -14,6 +17,6 @@
   <mat-list-item *ngFor="let event of oldEvents | async">
     <mat-icon matListIcon>✔</mat-icon>
     <h3 mat-line>{{event.fields.title}}</h3>
-    <p mat-line>{{event.fields.start | date:'short'}} - {{event.fields.end | date:'short'}}</p>
+    <p mat-line>{{event.fields.start | date:'d LLL yy HH:mm'}} - {{event.fields.end | date:'d LLL yy HH:mm'}}</p>
   </mat-list-item>
 </mat-list>

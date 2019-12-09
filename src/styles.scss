@@ -30,3 +30,52 @@ $tumi-trips-theme: mat-light-theme($tumi-trips-primary, $tumi-trips-accent, $tum
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+//Global styles
+
+a.styled {
+  text-decoration: underline dashed;
+  color: inherit;
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+  &:visited {
+    text-decoration: underline double;
+  }
+}
+
+markdown {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  -ms-word-break: break-all;
+  word-break: break-all;
+  word-break: break-word;
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+  a {
+    text-decoration: underline dashed;
+    color: inherit;
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    &:visited {
+      text-decoration: underline double;
+    }
+  }
+
+  p:last-child{
+    margin: 0;
+  }
+
+  img {
+    width: 100%;
+    max-width: 600px;
+  }
+}

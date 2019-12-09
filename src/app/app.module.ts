@@ -14,11 +14,11 @@ import {environment} from '../environments/environment';
 import {MatCardModule} from '@angular/material/card';
 import {MatListModule} from '@angular/material/list';
 import {FlexLayoutModule} from '@angular/flex-layout';
-import {NgxMdModule} from 'ngx-md';
 import {HttpClientModule} from '@angular/common/http';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatIconModule} from '@angular/material/icon';
+import {MarkdownModule} from 'ngx-markdown';
 
 @NgModule({
   declarations: [
@@ -36,7 +36,7 @@ import {MatIconModule} from '@angular/material/icon';
     FlexLayoutModule,
     HttpClientModule,
     ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production}),
-    NgxMdModule.forRoot(),
+    MarkdownModule.forRoot(),
     MatListModule,
     MatCardModule,
     MatDividerModule,
