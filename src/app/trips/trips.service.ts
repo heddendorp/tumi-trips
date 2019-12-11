@@ -42,7 +42,7 @@ export class TripsService {
     return this.getTripDetails(tripId).pipe(map(trip => trip.fields.pages.find(page => page.sys.id === pageId)));
   }
 
-  getEvents(tripId) {
+  getEvents(tripId):Observable<any[]> {
     return this.getTripDetails(tripId).pipe(map(trip => trip.fields.events));
   }
 }

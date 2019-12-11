@@ -1,0 +1,16 @@
+.item{
+  border-radius: 8px;
+  position: relative;
+  &.active{
+    border: solid lightgrey 4px;
+    padding: 1.5rem 12px 12px;
+    margin: -12px;
+    &:before{
+      content: "Right now";
+      position: absolute;
+      font-size: 14px;
+      top: 8px;
+      color: grey;
+    }
+  }
+}

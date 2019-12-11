@@ -18,27 +18,20 @@ export class ScheduleComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.events = this.tripsService.getEvents(this.route.snapshot.paramMap.get('tripId')).pipe(
+    const eventStream = this.tripsService.getEvents(this.route.snapshot.paramMap.get('tripId')).pipe(
       map(events => events.map(event => {
         const startTime = DateTime.fromISO(event.fields.start);
         const endTime = DateTime.fromISO(event.fields.end);
         const interval = Interval.fromDateTimes(startTime, endTime);
         return {
           ...event,
-          duration: interval.length('hours')
+          duration: interval.length('hours'),
+          active: endTime > DateTime.local() && startTime <= DateTime.local(),
+          endTime
         };
-      }).filter(event => DateTime.fromISO(event.fields.end) > DateTime.local())));
-    this.oldEvents = this.tripsService.getEvents(this.route.snapshot.paramMap.get('tripId')).pipe(
-      map(events => events.map(event => {
-        const startTime = DateTime.fromISO(event.fields.start);
-        const endTime = DateTime.fromISO(event.fields.end);
-        const interval = Interval.fromDateTimes(startTime, endTime);
-        return {
-          ...event,
-          duration: interval.length('hours')
-        };
-      }).filter(event => DateTime.fromISO(event.fields.end) <= DateTime.local())));
-    // this.upcomingEvents$ = this.events.pipe(map(events => events));
+      }).sort((a, b) => a.endTime - b.endTime)));
+    this.events = eventStream.pipe(map(events => events.filter(event => DateTime.fromISO(event.fields.end) > DateTime.local())));
+    this.oldEvents = eventStream.pipe(map(events => events.filter(event => DateTime.fromISO(event.fields.end) <= DateTime.local())));
   }
 
 }
