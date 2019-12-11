@@ -1,8 +1,8 @@
-<h2>{{(selectedTrip$ | async)?.fields.title}}</h2>
-<h3>{{(selectedTrip$ | async)?.fields.start | date}}</h3>
+<h1 class="mat-headline" style="margin: 0;">{{(selectedTrip$ | async)?.fields.title}}</h1>
+<h3 class="mat-subheading-1" style="margin-bottom: 2rem;">{{(selectedTrip$ | async)?.fields.start | date}}</h3>
 <markdown [data]="(selectedTrip$ |async)?.fields.description">
 </markdown>
-<mat-divider></mat-divider>
+<div style="margin-bottom: 2rem;"></div>
 <mat-nav-list>
   <a mat-list-item routerLink="./schedule">
     <mat-icon mat-list-icon>📅</mat-icon>
